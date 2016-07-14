@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatapp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <nav  class="navbar navbar-light"  class="bg-faded">
+  	<a class="navbar-brand">CHAT APP</a>
+  	<ul class="nav navbar-nav">
+  		<% if current_user %>
+  		<li class="nav-item">
+  			<%= link_to "log out #{current_user.email}", logout_path, method: 'delete',  class: 'nav-link' %>
+  		</li>
+  		<% else %>
+  		<li class="nav-item">
+  			<%= link_to "Create An ACcount", new_user_path, class: 'nav-link' %>
+  		</li>
+  		<li class="nav-item">
+  			<%= link_to "Log In", new_session_path, class: 'nav-link' %>
+  		</li>
+  		<% end %>
+  	</ul>
+  </nav>
+  	<div class="container">
+    <%= yield %>
+    </div>
+  </body>
+</html>
